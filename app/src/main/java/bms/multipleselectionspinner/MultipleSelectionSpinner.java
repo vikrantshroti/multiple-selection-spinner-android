@@ -1,14 +1,11 @@
 package bms.multipleselectionspinner;
 
-/**
- * Created by root on 1/1/18.
- */
-
 import android.content.Context;
 import android.content.DialogInterface;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.AppCompatSpinner;
 import android.util.AttributeSet;
+import android.util.Log;
 import android.widget.ArrayAdapter;
 import android.widget.SpinnerAdapter;
 
@@ -21,18 +18,19 @@ import java.util.List;
  */
 
 public class MultipleSelectionSpinner extends AppCompatSpinner implements
-        DialogInterface.OnMultiChoiceClickListener {
+    DialogInterface.OnMultiChoiceClickListener {
 
     String[] _items = null;
     boolean[] mSelection = null;
 
     ArrayAdapter<String> simple_adapter;
+    private int sbLength;
 
     public MultipleSelectionSpinner(Context context) {
         super(context);
 
         simple_adapter = new ArrayAdapter<String>(context,
-                android.R.layout.simple_spinner_item);
+            android.R.layout.simple_spinner_item);
         super.setAdapter(simple_adapter);
     }
 
@@ -40,19 +38,22 @@ public class MultipleSelectionSpinner extends AppCompatSpinner implements
         super(context, attrs);
 
         simple_adapter = new ArrayAdapter<String>(context,
-                android.R.layout.simple_spinner_item);
+            android.R.layout.simple_spinner_item);
         super.setAdapter(simple_adapter);
     }
 
     public void onClick(DialogInterface dialog, int which, boolean isChecked) {
         if (mSelection != null && which < mSelection.length) {
             mSelection[which] = isChecked;
-
             simple_adapter.clear();
-            simple_adapter.add(buildSelectedItemString());
+            if (buildSelectedItemString().length()>0){
+                simple_adapter.add(buildSelectedItemString());
+            }else{
+                simple_adapter.add("Tap to select");
+            }
         } else {
             throw new IllegalArgumentException(
-                    "Argument 'which' is out of bounds.");
+                "Argument 'which' is out of bounds.");
         }
     }
 
@@ -66,6 +67,7 @@ public class MultipleSelectionSpinner extends AppCompatSpinner implements
             public void onClick(DialogInterface arg0, int arg1) {
 
             }
+
         });
         /*if (mSelection.length > 3){
             Toast.makeText(getContext(), "Cannot select more than 3", Toast.LENGTH_SHORT).show();
@@ -78,7 +80,7 @@ public class MultipleSelectionSpinner extends AppCompatSpinner implements
     @Override
     public void setAdapter(SpinnerAdapter adapter) {
         throw new RuntimeException(
-                "setAdapter is not supported by MultiSelectSpinner.");
+            "setAdapter is not supported by MultiSelectSpinner.");
     }
 
     public void setItems(String[] items) {
@@ -93,7 +95,8 @@ public class MultipleSelectionSpinner extends AppCompatSpinner implements
         _items = items.toArray(new String[items.size()]);
         mSelection = new boolean[_items.length];
         simple_adapter.clear();
-        simple_adapter.add(_items[0]);
+        simple_adapter.add("Tap to select");
+        ///simple_adapter.add(_items[0]);
         Arrays.fill(mSelection, false);
     }
 
@@ -130,10 +133,17 @@ public class MultipleSelectionSpinner extends AppCompatSpinner implements
             mSelection[index] = true;
         } else {
             throw new IllegalArgumentException("Index " + index
-                    + " is out of bounds.");
+                + " is out of bounds.");
         }
         simple_adapter.clear();
         simple_adapter.add(buildSelectedItemString());
+        /*if (sbLength>0){
+            Toast.makeText(getContext(), "Length greater than zero", Toast.LENGTH_SHORT).show();
+            simple_adapter.add(buildSelectedItemString());
+        }else{
+            Toast.makeText(getContext(), "Length shorter", Toast.LENGTH_SHORT).show();
+            simple_adapter.add("Tap to select");
+        }*/
     }
 
     public void setSelection(int[] selectedIndicies) {
@@ -145,7 +155,7 @@ public class MultipleSelectionSpinner extends AppCompatSpinner implements
                 mSelection[index] = true;
             } else {
                 throw new IllegalArgumentException("Index " + index
-                        + " is out of bounds.");
+                    + " is out of bounds.");
             }
         }
         simple_adapter.clear();
@@ -188,6 +198,8 @@ public class MultipleSelectionSpinner extends AppCompatSpinner implements
             }
         }
 
+        Log.e("sb length",""+sb.length());
+        sbLength=sb.length();
         return sb.toString();
     }
 
@@ -204,6 +216,12 @@ public class MultipleSelectionSpinner extends AppCompatSpinner implements
                 sb.append(_items[i]);
             }
         }
+        /*String sbCheck;
+        if (sb.length()>0){
+           sbCheck=sb.toString();
+        }else{
+            sbCheck="Tap to select";
+        }*/
         return sb.toString();
     }
 }
