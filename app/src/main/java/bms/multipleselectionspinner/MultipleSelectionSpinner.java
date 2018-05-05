@@ -8,7 +8,6 @@ import android.util.AttributeSet;
 import android.util.Log;
 import android.widget.ArrayAdapter;
 import android.widget.SpinnerAdapter;
-
 import java.util.Arrays;
 import java.util.LinkedList;
 import java.util.List;
@@ -53,7 +52,7 @@ public class MultipleSelectionSpinner extends AppCompatSpinner implements
             }
         } else {
             throw new IllegalArgumentException(
-                "Argument 'which' is out of bounds.");
+                "Argument 'which' is out of bounds");
         }
     }
 
