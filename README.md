@@ -1,4 +1,4 @@
-# multiple-selection-spinner-android
+# Multiple selection spinner
 
 ### A demonstaration of spinner for multiple selection of items.
 
