@@ -6,7 +6,9 @@
 Simply, import the project and run. Test it before you use.
 
 ### Screenshots
-![alt text](https://raw.githubusercontent.com/vikrantshroti/multiple-selection-spinner-android/master/device-2018-05-05-113637.png)![alt text](https://raw.githubusercontent.com/vikrantshroti/multiple-selection-spinner-android/master/device-2018-05-05-113722.png)![alt text](https://raw.githubusercontent.com/vikrantshroti/multiple-selection-spinner-android/master/device-2018-05-05-113741.png)
+![alt text](https://raw.githubusercontent.com/vikrantshroti/multiple-selection-spinner-android/master/device-2018-05-05-120207.png)
+![alt text](https://raw.githubusercontent.com/vikrantshroti/multiple-selection-spinner-android/master/device-2018-05-05-120225.png)
+![alt text](https://raw.githubusercontent.com/vikrantshroti/multiple-selection-spinner-android/master/device-2018-05-05-120235.png)
 
 #### Contributing
 Please read CONTRIBUTING.md for details on our code of conduct, and the process for submitting pull requests to us.
