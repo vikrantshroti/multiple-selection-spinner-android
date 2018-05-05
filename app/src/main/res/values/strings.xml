@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">MultipleSelectionSpinner</string>
+  <string name="get_spinner_item">Get spinner item</string>
 </resources>
